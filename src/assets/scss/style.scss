@@ -1,0 +1,29 @@
+/*-----------------------------------------------------------------------------
+    [Website Name]
+-----------------------------------------------------------------------------*/
+
+/*---- Imports ----*/
+
+@import 'partials/imports/normalize';
+
+/*---- Globals ----*/
+
+@import 'partials/globals/functions';
+@import 'partials/globals/mixins';
+@import 'partials/globals/vars';
+@import 'partials/globals/fonts';
+@import 'partials/globals/starters';
+
+/*---- Components ----*/
+
+@import 'partials/components/buttons';
+
+/*---- Main ----*/
+
+@import 'partials/main/general';
+@import 'partials/main/header';
+@import 'partials/main/footer';
+
+/*---- Priority Components ----*/
+
+@import 'partials/components/utilities';

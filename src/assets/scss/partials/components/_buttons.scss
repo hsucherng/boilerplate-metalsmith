@@ -1,0 +1,21 @@
+/*-----------------------------------------------------------------------------
+    $ Buttons
+-----------------------------------------------------------------------------*/
+
+.button {
+    padding: 0.25em 0.5em;
+    display: inline-block;
+    background-color: #eee;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+
+    &[disabled],
+    &.is-disabled {
+        cursor: default;
+    }
+}

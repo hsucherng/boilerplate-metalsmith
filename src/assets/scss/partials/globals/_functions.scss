@@ -1,0 +1,100 @@
+//-----------------------------------------------------------------------------
+//  Functions
+//-----------------------------------------------------------------------------
+
+//---- Unit setters ----//
+
+// Attach the `px` unit to a raw number
+@function px($num) {
+    @if $num == 0 {
+        @return $num;
+    }
+
+    @return $num * 1px;
+}
+
+// Attach the `%` unit to a raw number
+// Alternatively, pass in a second value to be used as the base for calculating the percentage
+@function perc($num, $base: false) {
+    @if $base != false {
+        @return $num / $base * 100%;
+    } @else if $num == 0 {
+        @return $num;
+    } @else {
+        @return $num * 1%;
+    }
+}
+
+// Attach the `vw` unit to a raw number
+// Alternatively, pass in a second value to be used as the base for calculating the vw
+@function vw($num, $base: false) {
+    @if $base != false {
+        @return $num / $base * 100vw;
+    } @else if $num == 0 {
+        @return $num;
+    } @else {
+        @return $num * 1vw;
+    }
+}
+
+// Attach the `vh` unit to a raw number
+// Alternatively, pass in a second value to be used as the base for calculating the vh
+@function vh($num, $base: false) {
+    @if $base != false {
+        @return $num / $base * 100vh;
+    } @else if $num == 0 {
+        @return $num;
+    } @else {
+        @return $num * 1vh;
+    }
+}
+
+// Attach the `em` unit to a raw number
+// Alternatively, pass in a second value to be used as the base for calculating the em
+@function em($num, $base: false) {
+    @if $base != false {
+        @return $num / $base * 1em;
+    } @else if $num == 0 {
+        @return $num;
+    } @else {
+        @return $num * 1em;
+    }
+}
+
+//---- Map-list getters ----//
+
+// Color getter
+@function c($color) {
+    @if map-has-key($colors, $color) {
+        @return map-get($colors, $color);
+    } @else {
+        @error 'No such color `#{$color}` in the $colors list.';
+    }
+}
+
+// Font-family getter
+@function ff($font-family) {
+    @if map-has-key($font-families, $font-family) {
+        @return map-get($font-families, $font-family);
+    } @else {
+        @error 'No such font-family `#{$font-family}` in the $font-families list.';
+    }
+}
+
+// Easings getter
+@function easing($easing) {
+    @if map-has-key($easings, $easing) {
+        @return map-get($easings, $easing);
+    } @else {
+        @error 'No such font-family `#{$easing}` in the $easings list.';
+    }
+}
+
+// Z-Index getter
+@function zi($z-index) {
+    @if map-has-key($z-indices, $z-index) {
+        @return map-get($z-indices, $z-index);
+    } @else {
+        @error 'No such z-index `#{$z-index}` in the $z-indices list.';
+    }
+}
