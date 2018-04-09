@@ -4,7 +4,7 @@ The [Metalsmith](http://metalsmith.io) boilerplate has been setup with the follo
 
 - Third party plugins:
     - [Autoprefixer](https://github.com/postcss/autoprefixer)
-    - [Express](https://github.com/chiefy/metalsmith-express)
+    - [Express](https://github.com/chiefy/metalsmith-express) (which also comes with LiveReload)
     - [Nunjucks](https://mozilla.github.io/nunjucks/)
     - [SCSS](http://sass-lang.com/)
     - [Stylelint](https://stylelint.io/)
@@ -12,15 +12,27 @@ The [Metalsmith](http://metalsmith.io) boilerplate has been setup with the follo
 
 - Custom-written functions:
     - A slightly more elaborate setup to allow for the addition of default metadata to all the source files.
-    - A concatenation function to allow for the splitting of JavaScript files into smaller partial files. This is mainly for organisation, though it can be prove to be useful in a few other situations as well.
+    - A concatenation function to allow for the splitting of JavaScript files into smaller partial files.
 
-## Setup
+## Initial setup
 
-1. Install [node](http://nodejs.org). Currently tested with v6.9.3.
-2. Make a copy of the *metalsmith* boilerplate folder.
-3. Open up the CLI (command-line interface, e.g. cmd.exe) and `cd` into the fresh copy of the boilerplate folder.
-4. Run `npm install`. This boilerplate has also been setup with Yarn, so if we have that, we can use `yarn install` instead of `npm install`. Either way, this should install all the required dependencies.
-5. Run `node build` to build the site, which should compile into a new *build* folder, and then serve it up on localhost (`http://localhost:8080/site/` by default).
+1. Make sure you have [NodeJS](http://nodejs.org) and [Yarn](http://yarnpkg.com/) installed. Currently tested with NodeJS v6.9.3.
+2. Clone this repository onto your machine.
+3. Make a copy of this folder and paste it at where you want your development files to be.
+4. Open up the CLI (command-line interface, e.g. cmd.exe) and `cd` into the fresh copy of the boilerplate folder.
+5. Run `yarn`. This should install all the required dependencies.
+6. Delete the `.git` folder that was cloned together with the boilerplate, then initialise the folder as a new Git repository.
+7. You are now ready to start building.
+
+Remember to change the `Website Title` in the `<title>` tag within the `templates/default.html` file, as well as `[Website Title]` in `src/assets/scss/style.scss` and `page.scss`.
+
+## Build flow
+
+To start the build, open up your CLI and `cd` into the folder. Then type `node build` and press enter to start the process, which does the following:
+
+1. Deletes the existing `build` folder.
+2. Starts up Metalsmith, which will compile all the necessary files into a *new* `build` folder.
+3. Once the compilation is complete, the files are served up on localhost - it is `http://localhost:8080/site/` by default.
 
 ## Configurations
 
@@ -32,9 +44,11 @@ Just a note: metadata set in the page's YAML always take precedence over those s
 
 ### Virtual Folder
 
-The build has a "virtual folder" setup by default --- basically, the build sends all the output files into the `virtualFolder` path that is set inside `configs/misc.js`. This is to allow for better browser URL history, since most sites using this workflow would be served over `localhost:8080` by default.
+The build has a "virtual folder" setup by default — basically, the build sends all the output files into the `virtualFolder` path that is set inside `configs/misc.js`. This is to allow for a more organised browser history.
 
-To disable it, set the `virtualFolder` value to `''`.
+So, for example, if you are developing a website called *The Jackson Five's*, you should change the value of the `virtualFolder` from `'site\\'` to `'the-jackson-fives'`. After that, your files will be served under `http://localhost:8080/the-jackson-fives/`, and will be distinct in your browser history.
+
+To disable this, set the `virtualFolder` value to `''`.
 
 ## Debugging notes
 
