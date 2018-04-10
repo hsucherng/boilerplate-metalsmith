@@ -17,12 +17,10 @@
 /*---- Components ----*/
 
 @import 'partials/components/buttons';
-
-/*---- Main ----*/
-
-@import 'partials/main/general';
-@import 'partials/main/header';
-@import 'partials/main/footer';
+@import 'partials/components/site-footer';
+@import 'partials/components/site-header';
+@import 'partials/components/site-main';
+@import 'partials/components/wrapper';
 
 /*---- Priority Components ----*/
 
