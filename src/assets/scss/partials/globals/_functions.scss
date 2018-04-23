@@ -82,7 +82,7 @@
 }
 
 // Easings getter
-@function easing($easing) {
+@function ease($easing) {
     @if map-has-key($easings, $easing) {
         @return map-get($easings, $easing);
     } @else {
