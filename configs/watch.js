@@ -1,3 +1,5 @@
+const argv = require('../custom-modules/argv.js');
+
 module.exports = {
     paths: {
         "${source}/*": true,
@@ -7,5 +9,5 @@ module.exports = {
         "${source}/**/assets/scss/**/*.scss": "**/assets/scss/**/*.scss",
         "templates/**": "**/*.html"
     },
-    livereload: true
+    livereload: !argv('--dist')
 };
