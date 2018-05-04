@@ -46,7 +46,7 @@ Just a note: metadata set in the page's YAML always take precedence over those s
 
 The build has a "virtual folder" setup by default — basically, the build sends all the output files into the `virtualFolder` path that is set inside `configs/misc.js`. This is to allow for a more organised browser history.
 
-So, for example, if you are developing a website called *The Jackson Five's*, you should change the value of the `virtualFolder` from `'site\\'` to `'the-jackson-fives'`. After that, your files will be served under `http://localhost:8080/the-jackson-fives/`, and will be distinct in your browser history.
+So, for example, if you are developing a website called *The Jackson Five's*, you should change the value of the `virtualFolder` from `'site'` to `'the-jackson-fives'`. After that, your files will be served under `http://localhost:8080/the-jackson-fives/`, and will be distinct in your browser history.
 
 To disable this, set the `virtualFolder` value to `''`.
 

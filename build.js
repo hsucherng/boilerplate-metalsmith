@@ -20,6 +20,7 @@ var watch          = require('metalsmith-watch');
 var jsPartials     = require('./custom-modules/metalsmith-js-partial.js');
 var run            = require('./custom-modules/metalsmith-run.js');
 var defaultMeta    = require('./custom-modules/metalsmith-default-meta.js');
+var virtualFolder  = require('./custom-modules/metalsmith-virtual-folder.js');
 
 /* Configs */
 var configs = {
@@ -99,16 +100,7 @@ Metalsmith(__dirname)
     }))
 
     /* Virtual folder */
-    .use(function(files, metalsmith, done) {
-        if(configs.misc.virtualFolder) {
-            Object.keys(files).forEach(function(filepath, index) {
-                files[configs.misc.virtualFolder + filepath] = files[filepath];
-                delete files[filepath]
-            });
-        }
-
-        done();
-    })
+    .use(virtualFolder(configs.misc.virtualFolder))
 
     /* Watch and serve */
     .use(express(configs.express))
