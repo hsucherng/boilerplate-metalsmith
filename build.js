@@ -10,6 +10,7 @@ var filenames      = require('metalsmith-filenames'); // Not absolutely necessar
 var inPlace        = require('metalsmith-in-place');
 var minimatch      = require('minimatch');
 var nunjucks       = require('nunjucks');
+var open           = require('open');
 var postcss        = require('metalsmith-with-postcss');
 var postcssSCSS    = require('postcss-scss');
 var sass           = require('metalsmith-sass');
@@ -111,6 +112,14 @@ Metalsmith(__dirname)
 
     /* END! */
     .build(function(err, files) {
-        var message = err ? err : 'Build complete!';
-        console.log(message);
+        if(err) {
+            console.error(err);
+            return;
+        }
+
+        console.log('Build complete!');
+
+        if(argv('--open')) {
+            open(`http://${configs.express.host}:${configs.express.port}/${configs.misc.virtualFolder}`)
+        }
     });
