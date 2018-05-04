@@ -18,24 +18,24 @@
  *
  * Does NOT support nested concatenation.
  */
-var minimatch = require('minimatch');
+const minimatch = require('minimatch');
 
 module.exports = function(options) {
-    var regexp = /^( +)?\/\/(-)?@js-partial(.+)$/gm;
+    const regexp = /^( +)?\/\/(-)?@js-partial(.+)$/gm;
 
     return function(files, metalsmith, done) {
-        var jsFiles = Object.keys(files).filter(function(filepath) {
+        const jsFiles = Object.keys(files).filter(function(filepath) {
                 return minimatch(filepath, '**/*.js');
             });
 
         jsFiles.forEach(function(filepath) {
-            var file = files[filepath],
-                fileContents = file.contents.toString(),
-                splitFilepath = filepath.split('\\'),
-                currentFolder = splitFilepath.slice(0, splitFilepath.length-1).join('\\');
+            const file = files[filepath];
+            const splitFilepath = filepath.split('\\');
+            const currentFolder = splitFilepath.slice(0, splitFilepath.length-1).join('\\');
+            const fileContents = file.contents.toString();
 
             file.contents = fileContents.replace(regexp, function(matchStr, indentStr, ignoreIndent, argStr) {
-                var targetFilepath;
+                let targetFilepath;
 
                 if(typeof indentStr === 'undefined') {
                     indentStr = '';
@@ -43,8 +43,8 @@ module.exports = function(options) {
 
                 argStr = argStr.trim();
 
-                var argStr__firstChar = argStr.charAt(0),
-                    argStr__lastChar = argStr.charAt(argStr.length-1);
+                const argStr__firstChar = argStr.charAt(0);
+                const argStr__lastChar = argStr.charAt(argStr.length-1);
 
                 if(argStr__firstChar === '"' && argStr__lastChar === '"'
                 || argStr__firstChar === "'" && argStr__lastChar === "'") {
@@ -52,12 +52,12 @@ module.exports = function(options) {
                 }
 
                 if(targetFilepath) {
-                    var splitTargetFilepath = targetFilepath.split('/'),
-                        reverseSlashTargetFilepath = splitTargetFilepath.join('\\'),
-                        targetFile = files[currentFolder + '\\' + reverseSlashTargetFilepath];
+                    const splitTargetFilepath = targetFilepath.split('/');
+                    const reverseSlashTargetFilepath = splitTargetFilepath.join('\\');
+                    const targetFile = files[currentFolder + '\\' + reverseSlashTargetFilepath];
 
                     if(targetFile) {
-                        var targetFileContents = targetFile.contents.toString();
+                        let targetFileContents = targetFile.contents.toString();
 
                         if(ignoreIndent !== '-') {
                             targetFileContents = targetFileContents
@@ -70,7 +70,7 @@ module.exports = function(options) {
 
                         return targetFileContents;
                     } else {
-                        var errorStr = 'console.error(\'@js-partial ERROR: File "' + currentFolder.replace(/[\\]/g, '/') + '/' + targetFilepath + '" does not exist.\');';
+                        let errorStr = `console.error('@js-partial ERROR: File "${currentFolder.replace(/[\\]/g, '/')}/${targetFilepath}" does not exist.');`;
 
                         if(ignoreIndent !== '-') {
                             errorStr = indentStr + errorStr;
@@ -84,8 +84,8 @@ module.exports = function(options) {
 
         jsFiles
             .filter(function(filepath) {
-                var splitFilepath = filepath.split('\\'),
-                    filename = splitFilepath[splitFilepath.length-1];
+                const splitFilepath = filepath.split('\\');
+                const filename = splitFilepath[splitFilepath.length-1];
 
                 return filename.charAt(0) === '_';
             })

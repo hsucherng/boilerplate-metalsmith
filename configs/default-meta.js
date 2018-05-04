@@ -14,7 +14,7 @@ module.exports = {
 
     '**/*.html': {
         path: function(filepath, file, files, metalsmith) {
-            var rootPath = getRootPath(filepath);
+            const rootPath = getRootPath(filepath);
 
             return {
                 'root': rootPath,
@@ -41,10 +41,10 @@ module.exports = {
 };
 
 function getRootPath(filepath) {
-    var splitFilepath = filepath.split('\\');
-    var rootPath = '';
+    const splitFilepath = filepath.split('\\');
+    let rootPath = '';
 
-    for(var i = 0; i < splitFilepath.length-1; i++) {
+    for(let i = 0; i < splitFilepath.length-1; i++) {
         rootPath += '../';
     }
 
