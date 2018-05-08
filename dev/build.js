@@ -59,7 +59,9 @@ Metalsmith(__dirname)
                 config: configs.stylelint
             },
             "autoprefixer": {},
-            "postcss-reporter": {}
+            "postcss-reporter": {
+                throwError: true
+            }
         },
         syntax: postcssSCSS,
     }))
