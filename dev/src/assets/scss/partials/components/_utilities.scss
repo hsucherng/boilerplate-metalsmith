@@ -81,8 +81,8 @@ $widths: (
     $bottom-negative:       (enable: false, media: false),
     $color:                 (enable: false, media: false),
     $clear:                 (enable: false, media: false),
-    $cursor:                (enable: false, media: false),
     $clearfix:              (enable: false, media: false),
+    $cursor:                (enable: false, media: false),
     $display:               (enable: false, media: false),
     $font-family:           (enable: false, media: false),
     $font-size:             (enable: false, media: false),
@@ -150,10 +150,6 @@ $widths: (
         or $media == false {
             @each $size, $amount in $widths {
                 .b\:#{$size}#{$query} { bottom: perc($amount); }
-
-                @if map-get($bottom, negative) == true {
-                    .b\:-#{$size}#{$query} { bottom: perc(-$amount); }
-                }
             }
         }
     }
@@ -193,17 +189,6 @@ $widths: (
         }
     }
 
-    //---- Cursor ----//
-
-    @if map-get($cursor, enable) == true {
-        @if map-get($cursor, media) == true
-        or $media == false {
-            .cu\:a#{$query} { cursor: auto;     }
-            .cu\:d#{$query} { cursor: default;  }
-            .cu\:p#{$query} { cursor: pointer;  }
-        }
-    }
-
     //---- Clearfix ----//
 
     @if map-get($clearfix, enable) == true {
@@ -212,6 +197,17 @@ $widths: (
             .cf#{$query} {
                 @include clearfix;
             }
+        }
+    }
+
+    //---- Cursor ----//
+
+    @if map-get($cursor, enable) == true {
+        @if map-get($cursor, media) == true
+        or $media == false {
+            .cu\:a#{$query} { cursor: auto;     }
+            .cu\:d#{$query} { cursor: default;  }
+            .cu\:p#{$query} { cursor: pointer;  }
         }
     }
 
@@ -334,10 +330,6 @@ $widths: (
                 .mt\:#{$size}#{$query} { margin-top:    px($amount); }
                 .my\:#{$size}#{$query},
                 .mb\:#{$size}#{$query} { margin-bottom: px($amount); }
-
-                @if map-get($margin, negative) == true
-                and $amount != 0 {
-                }
             }
         }
     }
@@ -390,10 +382,6 @@ $widths: (
                 .mt\:#{$size}#{$query} { margin-top:    px($amount); }
                 .my\:#{$size}#{$query},
                 .mb\:#{$size}#{$query} { margin-bottom: px($amount); }
-
-                @if map-get($margin-width, negative) == true
-                and $amount != 0 {
-                }
             }
         }
     }
@@ -421,8 +409,8 @@ $widths: (
 
     //---- Overflow ----//
 
-    @if map-get($padding, enable) == true {
-        @if map-get($padding, media) == true
+    @if map-get($overflow, enable) == true {
+        @if map-get($overflow, media) == true
         or $media == false {
             .o\:a#{$query} { overflow: auto;    -webkit-overflow-scrolling: touch; }
             .o\:v#{$query} { overflow: visible; }
@@ -468,10 +456,6 @@ $widths: (
         or $media == false {
             @each $size, $amount in $widths {
                 .r\:#{$size}#{$query} { right: perc($amount); }
-
-                @if map-get($right, negative) == true {
-                    .r\:-#{$size}#{$query} { right: perc(-$amount); }
-                }
             }
         }
     }
@@ -530,10 +514,6 @@ $widths: (
         or $media == false {
             @each $size, $amount in $widths {
                 .t\:#{$size}#{$query} { top: perc($amount); }
-
-                @if map-get($top, negative) == true {
-                    .t\:-#{$size}#{$query} { top: perc(-$amount); }
-                }
             }
         }
     }
