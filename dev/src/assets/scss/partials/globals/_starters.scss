@@ -12,8 +12,8 @@
 }
 
 html {
-    background-color: c(dark-white);
-    color: c(black);
+    background-color: $dark-white;
+    color: $black;
 }
 
 body {
@@ -25,7 +25,7 @@ button,
 input,
 select,
 textarea {
-    font: 100%/1.2 ff(base);
+    font: 100%/1.2 $ff-base;
 }
 
 h1,
@@ -46,7 +46,7 @@ h3,
 h4,
 h5,
 h6 {
-    font: 1.25em/1.1 ff(alpha);
+    font: 1.25em/1.1 $ff-alpha;
 }
 
 a,
