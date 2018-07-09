@@ -11,6 +11,14 @@
     transition: none $transition-duration $transition-easing;
 }
 
+html,
+button,
+input,
+select,
+textarea {
+    font: 100%/1.2 $ff-base;
+}
+
 html {
     background-color: $dark-white;
     color: $black;
@@ -18,14 +26,6 @@ html {
 
 body {
     margin: 0;
-}
-
-html,
-button,
-input,
-select,
-textarea {
-    font: 100%/1.2 $ff-base;
 }
 
 h1,
