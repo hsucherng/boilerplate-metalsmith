@@ -11,7 +11,7 @@ This project uses [Metalsmith](http://metalsmith.io), and has been setup with th
     - [Uglify](https://github.com/ksmithut/metalsmith-uglify)
 
 - Custom-written functions:
-    - A slightly more elaborate setup to allow for the addition of default metadata to all the source files.
+    - Set default metadata for all source files.
     - A concatenation function to allow for the splitting of JavaScript files into smaller partial files.
 
 ## Initial setup
@@ -40,7 +40,7 @@ To disable this, set the `virtualFolder` value to `''`.
 
 ## Debugging notes
 
-For certain plugins, we can get the build to log information in the console by setting the `DEBUG` environment variable. Currently, in this build, it seems that `metalsmith-in-place` and `metalsmith-copy` have been setup for this behaviour.
+For certain plugins, we can get the build to log information in the console by setting the `DEBUG` environment variable.
 
 On Windows, use the `set` command to set a value for the `DEBUG` environment variable. Setting it to `*` would turn on debugging for all configured plugins:
 
