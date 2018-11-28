@@ -2,12 +2,12 @@
 const Metalsmith     = require('metalsmith');
 const cleanCss       = require('metalsmith-clean-css');
 const copy           = require('metalsmith-copy');
+const colors         = require('colors/safe');
 const express        = require('metalsmith-express');
 const filenames      = require('metalsmith-filenames'); // Not absolutely necessary, but it's useful metadata, especially for navigation
 const inPlace        = require('metalsmith-in-place');
 const minimatch      = require('minimatch');
 const nunjucks       = require('nunjucks');
-const open           = require('open');
 const postcss        = require('metalsmith-with-postcss');
 const postcssSCSS    = require('postcss-scss');
 const sass           = require('metalsmith-sass');
@@ -32,7 +32,12 @@ const configs = {
 
 /* Starting the entire build process */
 
-console.log('Building...');
+if(!configs.misc.setupComplete) {
+    console.log(colors.yellow.bold(`Before building, you must first complete the initial setup. You can do that by running the ${ colors.green('setup.bat') } file.`));
+    return;
+}
+
+console.log(`\r\n${ colors.green.bold('Building...') }\r\n`);
 
 /* Nunjucks configuration */
 
@@ -124,13 +129,13 @@ Metalsmith(__dirname)
     /* END! */
     .build(function(err, files) {
         if(err) {
-            console.error(err);
+            console.error(colors.red(err));
             return;
         }
 
-        console.log('Build complete!');
-
-        if(argv('--open')) {
-            open(`http://${configs.express.host}:${configs.express.port}/${configs.misc.virtualFolder}`)
-        }
+        console.log(`
+${ colors.green.bold('Build complete!') }
+ - Open your browser and navigate to http://${configs.express.host}:${configs.express.port}/${configs.misc.virtualFolder} to view the site
+`
+        );
     });

@@ -1,4 +1,4 @@
-# Website Name
+# WEBSITE-NAME
 
 This project uses [Metalsmith](http://metalsmith.io), and has been setup with the following:
 
@@ -20,7 +20,8 @@ This project uses [Metalsmith](http://metalsmith.io), and has been setup with th
 2. Clone this repository onto your machine.
 3. Open up the command-line and `cd` into this repository folder.
 4. Run `yarn`. This should install all the required dependencies.
-5. You are now ready to start building. Run `node build --open`, and the website will be opened in your browser once it is ready.
+5. Double-click on `setup.bat` to run a basic initial setup.
+6. You are now ready to start building. Double-click on `serve.bat`, then navigate to the full localhost path to view the site.
 
 ## Configurations
 
@@ -29,14 +30,6 @@ Check the files in the `configs` folder for the configurations that affect the b
 ### Default Meta
 
 Just a note: metadata set in the page's YAML always take precedence over those set in `configs/default-meta.js`.
-
-### Virtual Folder
-
-The build has a "virtual folder" setup by default — basically, the build sends all the output files into the `virtualFolder` path that is set inside `configs/misc.js`. This is to allow for a more organised browser history.
-
-So, for example, if you are developing a website called *The Jackson Five's*, you should change the value of the `virtualFolder` from `'site'` to `'the-jackson-fives'`. After that, your files will be served under `http://localhost:8080/the-jackson-fives/`, and will be distinct in your browser history.
-
-To disable this, set the `virtualFolder` value to `''`.
 
 ## Debugging notes
 
