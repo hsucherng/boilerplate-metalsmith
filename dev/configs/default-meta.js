@@ -17,24 +17,25 @@ module.exports = {
             const rootPath = getRootPath(filepath);
 
             return {
-                'root': rootPath,
-                'css': rootPath + 'assets/css/',
-                'images': {
-                    /* Set the page's image folder based on its folder path and
-                     * file name.
+                root: rootPath,
+                css: rootPath + 'assets/css/',
+                js: rootPath + 'assets/js/',
+
+                images: {
+                    base: rootPath + 'assets/images/',
+
+                    /*
+                     * Set the page's image folder based on its folder path and
+                     * file name:
                      *
-                     * If folder path & file name: plans/prepaid/ultimate.html,
-                     * then {{ path.images.page }} = {{ path.root }}assets/images/pages/plans/prepaid/ultimate/
+                     * - If folder path & file name = plans/prepaid/ultimate.njk,
+                     *   then {{ path.images.page }} = {{ path.root }}assets/images/pages/plans/prepaid/ultimate/
                      *
-                     * To override this, set the `imagesFolder` variable in the
-                     * page's YAML. It will be prefixed with the root path + the
-                     * base path to the page images folder.
+                     * - If folder path & file name = about/team/index.njk,
+                     *   then {{ path.images.page }} = {{ path.root }}assets/images/pages/about/team/index/
                      */
-                    'page': (file.imagesFolder)
-                          ? rootPath + 'assets/images/pages/' + file.imagesFolder
-                          : rootPath + 'assets/images/pages/' + filepath.replace('index.html', 'landing').replace('.html', '').replace(/\\/g, '/') + '/',
-                },
-                'js': rootPath + 'assets/js/'
+                    page: rootPath + 'assets/images/pages/' + filepath.replace(/\.(\w+)$/, '').replace(/\\/g, '/') + '/',
+                }
             };
         }
     }
