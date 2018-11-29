@@ -12,7 +12,59 @@
 
 //----//
 
+$utilities-media-queries: (
+    // 'xs': bp(xs-up),
+    // 'sm': bp(sm-up),
+    // 'md': bp(md-up),
+    // 'lg': bp(lg-up),
+    // 'xl': bp(xl-up),
+
+    // 'xs-dn': bp(xs-dn),
+    // 'sm-dn': bp(sm-dn),
+    // 'md-dn': bp(md-dn),
+    // 'lg-dn': bp(lg-dn),
+    // 'xl-dn': bp(xl-dn),
+
+    // 'xs-sm': bp(xs-sm),
+    // 'xs-md': bp(xs-md),
+    // 'xs-lg': bp(xs-lg),
+    // 'xs-xl': bp(xs-xl),
+
+    // 'sm-md': bp(sm-md),
+    // 'sm-lg': bp(sm-lg),
+    // 'sm-xl': bp(sm-xl),
+
+    // 'md-lg': bp(md-lg),
+    // 'md-xl': bp(md-xl),
+
+    // 'lg-xl': bp(lg-xl),
+
+    // 'print': print,
+);
+
 $utilities: (
+    'as': (
+        (
+            appendMedia: false,
+            values: (
+                // 'c': (align-self: center),
+                // 'fs': (align-self: flex-start),
+                // 'fe': (align-self: flex-end),
+            ),
+        ),
+    ),
+
+    'ai': (
+        (
+            appendMedia: false,
+            values: (
+                // 'c': (align-items: center),
+                // 'fs': (align-items: flex-start),
+                // 'fe': (align-items: flex-end),
+            ),
+        ),
+    ),
+
     'bdc': (
         (
             appendMedia: false,
@@ -78,6 +130,7 @@ $utilities: (
                 // 'f': (display: flex),
                 // 'ib': (display: inline-block),
                 // 'i': (display: inline),
+                // 'f': (display: flex),
                 // 'n': (display: none),
                 // 't': (display: table),
                 // 'tr': (display: table-row),
@@ -487,7 +540,7 @@ $utilities: (
             $values: map-get($keySet, values);
 
             @if $media == false
-            or $appendMedia == true {
+            or $appendMedia != false {
                 @each $valueKey, $valueSet in $values {
                     @each $propName, $propValue in $valueSet {
                         .#{$keyName}\:#{$valueKey}#{$query} { #{$propName}: #{$propValue}; }
@@ -500,8 +553,8 @@ $utilities: (
 
 @include generate-utilities;
 
-@each $medium, $width in $media-sizes {
-    @media (min-width: px($width + 1)) {
-        @include generate-utilities($media: $medium);
+@each $queryKey, $queryCondition in $utilities-media-queries {
+    @media #{$queryCondition} {
+        @include generate-utilities($media: $queryKey);
     }
 }
