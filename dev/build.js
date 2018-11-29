@@ -93,7 +93,8 @@ Metalsmith(__dirname)
         pattern: '**/*.njk',
         engineOptions: {
             path: __dirname + '/templates'
-        }
+        },
+        suppressNoFilesError: true
     }))
 
     /* Virtual folder */
