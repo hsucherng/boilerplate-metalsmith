@@ -71,3 +71,53 @@
         @error 'No such easing `#{$easing}` in the $easings list.';
     }
 }
+
+//
+//  Breakpoint getter
+//
+//  Assuming our variable is as below:
+//
+//      $media-queries: (
+//          xs-dn: '(max-width: 480px)',
+//          md-up: '(min-width: 801px)'
+//      );
+//
+//  We can use the breakpoint function in the following ways:
+//
+//  - Simple keyword:
+//
+//      bp(xs-dn)
+//      └►  (max-width: 480px)
+//
+//  - Multiple keywords:
+//
+//      bp(xs-dn, md-up)
+//      └►  (max-width: 480px) and (min-width: 801px)
+//
+//  - Custom media query (which basically has no functionality):
+//
+//      bp('(max-height: 480px)')
+//      └►  (max-height: 480px)
+//
+//  - Keywords with custom media query:
+//
+//      bp(xs-dn, '(max-height: 480px)')
+//      └►  (max-width: 480px) and (max-height: 480px)
+//
+@function bp($breakpoints...) {
+    $finalBreakpoint: '';
+
+    @each $breakpoint in $breakpoints {
+        @if $finalBreakpoint != '' {
+            $finalBreakpoint: $finalBreakpoint + ' and ';
+        }
+
+        @if map-has-key($media-queries, $breakpoint) {
+            $finalBreakpoint: $finalBreakpoint + map-get($media-queries, $breakpoint);
+        } @else {
+            $finalBreakpoint: $finalBreakpoint + $breakpoint;
+        }
+    }
+
+    @return $finalBreakpoint;
+}
