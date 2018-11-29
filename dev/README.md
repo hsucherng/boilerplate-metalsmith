@@ -23,13 +23,48 @@ This project uses [Metalsmith](http://metalsmith.io), and has been setup with th
 5. Double-click on `setup.bat` to run a basic initial setup.
 6. You are now ready to start building. Double-click on `serve.bat`, then navigate to the full localhost path to view the site.
 
-## Configurations
+## Notes
 
-Check the files in the `configs` folder for the configurations that affect the build and its output.
+### YAML
 
-### Default Meta
+Each page can have its own unique metadata through the YAML frontmatter. The format is typically as follows:
 
-Just a note: metadata set in the page's YAML always take precedence over those set in `configs/default-meta.js`.
+```
+---
+title: Home
+subtitle: Welcome to Home
+---
+
+<p>Put your page contents here.</p>
+```
+
+Using the above example, inserting `{{ title }}` into your `.njk` file will then be replaced with `Home`, while inserting `{{ subtitle }}` will be replaced with `Welcome to Home`.
+
+### Paths
+
+There is a `path` object that you can use within the `.njk` files for page and asset URLs:
+
+- `{{ path.root }}` leads to the root `src` folder.
+- `{{ path.css }}` leads to the CSS folder.
+- `{{ path.js }}` leads to the JS folder.
+- `{{ path.images.base }}` leads to the base images folder.
+- `{{ path.images.page }}` leads to the page images folder.
+    - The value of this is dependent on the folder path and file name, e.g. if you are currently working on `about/creative-team/art-director.njk`, then `{{ path.images.page }}` will result in `{{ path.root }}assets/images/pages/about/creative-team/art-director/`.
+
+This `path` object is setup using `configs/default-meta.js`. Feel free to edit it if you require additional path information.
+
+## Additional configurations
+
+Check the files in the `configs` folder for the configurations that affect the build and its output:
+
+- `default-meta.js`: This is the default metadata for files used in the project. Most useful for `.njk` files, because these metadata are then exposed for template usage.
+    - Note that the metadata set in the page's YAML frontmatter will always take precedence over those set in `default-meta.js`.
+- `express.js`: This determines the `host` and `port` to serve your site on. By default it is set to `localhost:8080`.
+- `misc.js`: Miscellaneous settings:
+    - `setupComplete`: This boolean is used to determine whether we've run the `setup` command. Once the `setup` command is completed, this property will be updated accordingly.
+    - `virtualFolderName`: This determines the final path that the site will be served on. Once the `setup` command is completed, this property will be updated accordingly.
+- `stylelint.js`: This holds the rules for stylelint, which helps check our CSS for errors and mistakes.
+- `watch.js`: This determines what files are watched, as well as how the files trigger rebuilds of other files whenever they are changed.
 
 ## Debugging notes
 
