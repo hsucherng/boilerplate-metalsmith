@@ -1,10 +1,14 @@
 {% extends 'default.html' %}
 
+{% block styles -%}
+        <!-- <link href="{{path.css}}page.css" rel="stylesheet" type="text/css"> -->
+{%- endblock %}
+
 {% block content -%}
             <div class="wrapper">
-                <h2>
+                <h1>
                     Home
-                </h2>
+                </h1>
 
                 <br>
 
@@ -14,4 +18,8 @@
 
                 {{ path.images.page }}
             </div>
+{%- endblock %}
+
+{% block scripts -%}
+        <!-- <script src="{{path.js}}home.js"></script> -->
 {%- endblock %}

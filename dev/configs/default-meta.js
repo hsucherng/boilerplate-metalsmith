@@ -12,7 +12,7 @@ module.exports = {
 
     */
 
-    '**/*.html': {
+    '**/*.njk': {
         path: function(filepath, file, files, metalsmith) {
             const rootPath = getRootPath(filepath);
 

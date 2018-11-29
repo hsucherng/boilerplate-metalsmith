@@ -95,7 +95,7 @@ Metalsmith(__dirname)
                                 });
                             }
 
-                            files[filepath].contents = new Buffer(contents);
+                            files[filepath].contents = Buffer.from(contents);
                         });
 
                         /*---- Disable setup warning for build command ----*/
@@ -108,7 +108,7 @@ Metalsmith(__dirname)
 
                         miscConfigContents = miscConfigContents.replace('setupComplete: false', 'setupComplete: true');
 
-                        miscConfigFile.contents = new Buffer(miscConfigContents);
+                        miscConfigFile.contents = Buffer.from(miscConfigContents);
 
                         /*---- Log all updated files ----*/
 

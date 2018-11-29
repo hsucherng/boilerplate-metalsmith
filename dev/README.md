@@ -16,7 +16,7 @@ This project uses [Metalsmith](http://metalsmith.io), and has been setup with th
 
 ## Initial setup
 
-1. Make sure you have [NodeJS](http://nodejs.org) and [Yarn](http://yarnpkg.com/) installed. Currently tested with NodeJS v6.9.3 and Yarn v1.6.0.
+1. Make sure you have [NodeJS](http://nodejs.org) and [Yarn](http://yarnpkg.com/) installed. Currently tested with NodeJS v10.14.0 and Yarn v1.12.3.
 2. Clone this repository onto your machine.
 3. Open up the command-line and `cd` into this repository folder.
 4. Run `yarn`. This should install all the required dependencies.

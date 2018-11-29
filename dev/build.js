@@ -7,7 +7,6 @@ const express        = require('metalsmith-express');
 const filenames      = require('metalsmith-filenames'); // Not absolutely necessary, but it's useful metadata, especially for navigation
 const inPlace        = require('metalsmith-in-place');
 const minimatch      = require('minimatch');
-const nunjucks       = require('nunjucks');
 const postcss        = require('metalsmith-with-postcss');
 const postcssSCSS    = require('postcss-scss');
 const sass           = require('metalsmith-sass');
@@ -38,16 +37,6 @@ if(!configs.misc.setupComplete) {
 }
 
 console.log(`\r\n${ colors.green.bold('Building...') }\r\n`);
-
-/* Nunjucks configuration */
-
-nunjucks
-    .configure(__dirname + '/templates', {
-        noCache: true
-    })
-    .addFilter('indexOf', function(baseString, comparisonString) {
-        return baseString.indexOf(comparisonString);
-    });
 
 /* Starting Metalsmith */
 
@@ -85,10 +74,6 @@ Metalsmith(__dirname)
     .use(cleanCss({ // ... so that we can minify it.
         files: '**/*.min.css',
         cleanCSS: {
-            advanced: false,
-            aggressiveMerging: false,
-            mediaMerging: false,
-            restructuring: false,
             rebase: false
         }
     }))
@@ -105,8 +90,10 @@ Metalsmith(__dirname)
     .use(filenames()) // Not absolutely necessary, but it's useful metadata, especially for navigation
     .use(defaultMeta(configs.defaultMeta))
     .use(inPlace({
-        engine: 'nunjucks',
-        pattern: '**/*.html'
+        pattern: '**/*.njk',
+        engineOptions: {
+            path: __dirname + '/templates'
+        }
     }))
 
     /* Virtual folder */
