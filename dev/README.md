@@ -5,6 +5,7 @@ This project uses [Metalsmith](http://metalsmith.io), and has been setup with th
 - Third party plugins:
     - [Autoprefixer](https://github.com/postcss/autoprefixer)
     - [Express](https://github.com/chiefy/metalsmith-express) (which also comes with LiveReload)
+    - [Node Sprite Generator](https://github.com/selaux/node-sprite-generator/)
     - [Nunjucks](https://mozilla.github.io/nunjucks/)
     - [SCSS](http://sass-lang.com/)
     - [Stylelint](https://stylelint.io/)
@@ -73,6 +74,7 @@ Check the files in the `configs` folder for the configurations that affect the b
     - Replace `FULLNAME` with the properly formatted sprite name, e.g. `Hari Raya`.
 2. Ensure that all required images for spriting have been added at the correct source path.
 3. Run `sprite.bat`.
+4. Check the newly generated SCSS files at `stylesheetPath` to see what mixins are available for use, e.g. `@include hari-raya-sprite($hari-raya-firework)`.
 
 ## Debugging notes
 

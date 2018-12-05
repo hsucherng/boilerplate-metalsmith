@@ -4,7 +4,11 @@
 
 //---- Unit setters ----//
 
+//
 // Attach the `px` unit to a raw number
+//
+//      px(15) -► 15px
+//
 @function px($num) {
     @if $num == 0 {
         @return $num;
@@ -13,8 +17,15 @@
     @return $num * 1px;
 }
 
-// Attach the `%` unit to a raw number
-// Alternatively, pass in a second value to be used as the base for calculating the percentage
+//
+// Attach the `px` unit to a raw number
+//
+// Alternatively, pass in a second value to be used as the base for calculating
+// the percentage.
+//
+//      perc(15) -► 15%
+//      perc(4, 8) -► 50%
+//
 @function perc($num, $base: false) {
     @if $base != false {
         @return $num / $base * 100%;
@@ -25,8 +36,15 @@
     }
 }
 
+//
 // Attach the `vw` unit to a raw number
-// Alternatively, pass in a second value to be used as the base for calculating the vw
+//
+// Alternatively, pass in a second value to be used as the base for calculating
+// the vw.
+//
+//      vw(15) -► 15vw
+//      vw(4, 8) -► 50vw
+//
 @function vw($num, $base: false) {
     @if $base != false {
         @return $num / $base * 100vw;
@@ -37,8 +55,15 @@
     }
 }
 
+//
 // Attach the `vh` unit to a raw number
-// Alternatively, pass in a second value to be used as the base for calculating the vh
+//
+// Alternatively, pass in a second value to be used as the base for calculating
+// the vh.
+//
+//      vh(15) -► 15vh
+//      vh(4, 8) -► 50vh
+//
 @function vh($num, $base: false) {
     @if $base != false {
         @return $num / $base * 100vh;
@@ -49,8 +74,15 @@
     }
 }
 
+//
 // Attach the `em` unit to a raw number
-// Alternatively, pass in a second value to be used as the base for calculating the em
+//
+// Alternatively, pass in a second value to be used as the base for calculating
+// the em.
+//
+//      em(15) -► 15em
+//      em(4, 8) -► 0.5em
+//
 @function em($num, $base: false) {
     @if $base != false {
         @return $num / $base * 1em;
