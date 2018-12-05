@@ -1,0 +1,2 @@
+node sprite
+pause

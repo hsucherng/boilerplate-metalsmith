@@ -66,6 +66,14 @@ Check the files in the `configs` folder for the configurations that affect the b
 - `stylelint.js`: This holds the rules for stylelint, which helps check our CSS for errors and mistakes.
 - `watch.js`: This determines what files are watched, as well as how the files trigger rebuilds of other files whenever they are changed.
 
+## Sprite Generator
+
+1. Open up the `sprite.js` file:
+    - Replace all `FILENAME` with the name of the sprite file, e.g. `hari-raya`.
+    - Replace `FULLNAME` with the properly formatted sprite name, e.g. `Hari Raya`.
+2. Ensure that all required images for spriting have been added at the correct source path.
+3. Run `sprite.bat`.
+
 ## Debugging notes
 
 For certain plugins, we can get the build to log information in the console by setting the `DEBUG` environment variable.

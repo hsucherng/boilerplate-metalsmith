@@ -4,7 +4,8 @@ module.exports = {
         "**/_mixins.scss",
         "**/_functions.scss",
         "**/_utilities.scss",
-        "**/imports/*.scss"
+        "**/imports/**",
+        "**/generated/**"
     ],
 
     "rules": {
