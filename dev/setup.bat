@@ -1,2 +1,0 @@
-node setup
-pause

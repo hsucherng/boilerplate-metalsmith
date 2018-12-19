@@ -21,8 +21,8 @@ This project uses [Metalsmith](http://metalsmith.io), and has been setup with th
 2. Clone this repository onto your machine.
 3. Open up the command-line and `cd` into this repository folder.
 4. Run `yarn`. This should install all the required dependencies.
-5. Double-click on `setup.bat` to run a basic initial setup.
-6. You are now ready to start building. Double-click on `serve.bat`, then navigate to the full localhost path to view the site.
+5. Run `node setup` to run a basic initial setup.
+6. You are now ready to start building. Run `node build`, then navigate to the full localhost path to view the site.
 
 ## Notes
 

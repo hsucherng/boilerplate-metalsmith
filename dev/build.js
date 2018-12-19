@@ -31,7 +31,7 @@ const configs = {
 /* Starting the entire build process */
 
 if(!configs.misc.setupComplete) {
-    console.log(colors.yellow.bold(`Before building, you must first complete the initial setup. You can do that by running the ${ colors.green('setup.bat') } file.`));
+    console.log(colors.yellow.bold(`Before building, you must first complete the initial setup. You can do that by running ${ colors.green('node setup') }.`));
     return;
 }
 
