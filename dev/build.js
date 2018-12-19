@@ -25,7 +25,6 @@ const configs = {
         defaultMeta: require('./configs/default-meta.js'),
         express:     require('./configs/express.js'),
         misc:        require('./configs/misc.js'),
-        stylelint:   require('./configs/stylelint.js'),
         watch:       require('./configs/watch.js')
     };
 
@@ -49,9 +48,6 @@ Metalsmith(__dirname)
         map: false,
         pattern: ['**/*.scss'],
         plugins: {
-            "stylelint": {
-                config: configs.stylelint
-            },
             "autoprefixer": {},
             "postcss-reporter": {
                 throwError: true

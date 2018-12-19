@@ -64,7 +64,6 @@ Check the files in the `configs` folder for the configurations that affect the b
 - `misc.js`: Miscellaneous settings:
     - `setupComplete`: This boolean is used to determine whether we've run the `setup` command. Once the `setup` command is completed, this property will be updated accordingly.
     - `virtualFolderName`: This determines the final path that the site will be served on. Once the `setup` command is completed, this property will be updated accordingly.
-- `stylelint.js`: This holds the rules for stylelint, which helps check our CSS for errors and mistakes.
 - `watch.js`: This determines what files are watched, as well as how the files trigger rebuilds of other files whenever they are changed.
 
 ## Sprite Generator
@@ -75,6 +74,14 @@ Check the files in the `configs` folder for the configurations that affect the b
 2. Ensure that all required images for spriting have been added at the correct source path.
 3. Run `sprite.bat`.
 4. Check the newly generated SCSS files at `stylesheetPath` to see what mixins are available for use, e.g. `@include hari-raya-sprite($hari-raya-firework)`.
+
+## Stylelint
+
+This project has `.stylelintignore` and `.stylelintrc.json` setup for use with [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter) and [SublimeLinter-stylelint](https://github.com/SublimeLinter/SublimeLinter-stylelint). You will need to install both of those using Package Control, as well as globally installing PostCSS and Stylelint using `npm`:
+
+```
+npm install -g postcss stylelint
+```
 
 ## Debugging notes
 
