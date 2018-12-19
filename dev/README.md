@@ -68,9 +68,7 @@ Check the files in the `configs` folder for the configurations that affect the b
 
 ## Sprite Generator
 
-1. Open up the `sprite.js` file:
-    - Replace all `FILENAME` with the name of the sprite file, e.g. `hari-raya`.
-    - Replace `FULLNAME` with the properly formatted sprite name, e.g. `Hari Raya`.
+1. Open up the `sprite.js` file, then replace all `FILENAME` with the name of the sprite file, e.g. `hari-raya`.
 2. Ensure that all required images for spriting have been added at the correct source path.
 3. Run `sprite.bat`.
 4. Check the newly generated SCSS files at `stylesheetPath` to see what mixins are available for use, e.g. `@include hari-raya-sprite($hari-raya-firework)`.

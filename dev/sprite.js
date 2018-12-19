@@ -15,9 +15,9 @@ nsg({
     }
 }, function (err) {
     if(err) {
-        console.log('FULLNAME sprite error.');
+        console.log('FILENAME sprite error.');
         console.error(err);
     } else {
-        console.log('FULLNAME sprite generated.');
+        console.log('FILENAME sprite generated.');
     }
 });
