@@ -119,7 +119,7 @@ Metalsmith(__dirname)
 
         console.log(`
 ${ colors.green.bold('Build complete!') }
- - Open your browser and navigate to http://${configs.express.host}:${configs.express.port}/${configs.misc.virtualFolder} to view the site
+ - Open your browser and navigate to ${ colors.yellow.bold(`http://${configs.express.host}:${configs.express.port}/${configs.misc.virtualFolder}`) } to view the site
 `
         );
     });
