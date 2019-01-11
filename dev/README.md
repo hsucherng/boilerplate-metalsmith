@@ -5,7 +5,6 @@ This project uses [Metalsmith](http://metalsmith.io), and has been setup with th
 - Third party plugins:
     - [Autoprefixer](https://github.com/postcss/autoprefixer)
     - [Express](https://github.com/chiefy/metalsmith-express) (which also comes with LiveReload)
-    - [Node Sprite Generator](https://github.com/selaux/node-sprite-generator/)
     - [Nunjucks](https://mozilla.github.io/nunjucks/)
     - [SCSS](http://sass-lang.com/)
     - [Stylelint](https://stylelint.io/)
@@ -65,13 +64,6 @@ Check the files in the `configs` folder for the configurations that affect the b
     - `setupComplete`: This boolean is used to determine whether we've run the `setup` command. Once the `setup` command is completed, this property will be updated accordingly.
     - `virtualFolderName`: This determines the final path that the site will be served on. Once the `setup` command is completed, this property will be updated accordingly.
 - `watch.js`: This determines what files are watched, as well as how the files trigger rebuilds of other files whenever they are changed.
-
-## Sprite Generator
-
-1. Open up the `sprite.js` file, then replace all `FILENAME` with the name of the sprite file, e.g. `hari-raya`.
-2. Ensure that all required images for spriting have been added at the correct source path.
-3. Run `sprite.bat`.
-4. Check the newly generated SCSS files at `stylesheetPath` to see what mixins are available for use, e.g. `@include hari-raya-sprite($hari-raya-firework)`.
 
 ## Stylelint
 
