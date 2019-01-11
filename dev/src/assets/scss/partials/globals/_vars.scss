@@ -12,6 +12,35 @@
 //=============================================================================
 //  $ Colors
 //=============================================================================
+//
+//  Organise colours as follows:
+//
+//      $grey: #aaa;
+//          $light-grey: #bbb;   <-- This must be lighter than $grey
+//          $light-grey-2: #ccc; <-- This must be lighter than $light-grey
+//          $light-grey-3: #ddd; <-- This must be lighter than $light-grey-2
+//          $dark-grey: #999;    <-- This must be darker than $grey
+//          $dark-grey-2: #888;  <-- This must be darker than $dark-grey
+//          $dark-grey-3: #777;  <-- This must be darker than $dark-grey-2
+//      $red: #f00;
+//          $light-red: #f99;   <-- This must be lighter than $red
+//          $dark-red: #a00;    <-- This must be darker than $red
+//      $white: #fff;
+//          $dark-white: #f00;   <-- This must be darker than $white
+//
+//  Elaboration:
+//
+//  - Organise $color in alphabetical order, e.g. $grey, then $red, then $white.
+//
+//  - $light-color and $dark-color should be placed right after its $color,
+//    and should be indented one level deeper.
+//
+//  - If you require more light or dark variations of the colour, place a number
+//    behind it. Make sure the intensity increases in a single direction, e.g.
+//    $light-color-2 must be lighter than $light-color, and $light-color-3 must
+//    be lighter than $light-color-2.
+//
+//=============================================================================
 
 $black: #333;
     $light-black: #999;
