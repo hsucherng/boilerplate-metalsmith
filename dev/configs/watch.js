@@ -7,7 +7,7 @@ module.exports = {
         "${source}/**/assets/!(js|scss)/**": true,
         "${source}/**/assets/js/**/*.js": "**/assets/js/**/*.js",
         "${source}/**/assets/scss/**/*.scss": "**/assets/scss/**/*.scss",
-        "templates/**": "**/*.html"
+        "templates/**": "**/*.njk"
     },
     livereload: !argv('--dist')
 };
