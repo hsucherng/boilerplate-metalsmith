@@ -1,4 +1,5 @@
 const argv = require('../custom-modules/argv.js');
+const expressConfig = require('./express.js');
 
 module.exports = {
     paths: {
@@ -9,5 +10,5 @@ module.exports = {
         "${source}/**/assets/scss/**/*.scss": "**/assets/scss/**/*.scss",
         "templates/**": "**/*.njk"
     },
-    livereload: !argv('--dist')
+    livereload: expressConfig.liveReloadPort
 };
