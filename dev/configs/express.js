@@ -1,8 +1,9 @@
 const netstat = require('node-netstat');
 const colors  = require('colors/safe');
+const argv    = require('../custom-modules/argv.js');
 
-let expressPort = 8080;
-let liveReloadPort = 35729;
+let expressPort = argv('port') ? Number(argv('port')) : 8080;
+let liveReloadPort = argv('liveReloadPort') ? Number(argv('liveReloadPort')) : 35729;
 
 let expressPortConflict = false;
 let expressPortReady = false;
