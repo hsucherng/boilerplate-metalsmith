@@ -74,7 +74,7 @@ Metalsmith(__dirname)
                         /*---- Setup files as necessary ----*/
 
                         let filepaths = Object.keys(files).filter(filepath => {
-                                return minimatch(filepath, '**/*.+(js|ts|html|jade|pug|scss|css|less|md|markdown)');
+                                return minimatch(filepath, '**/*.+(js|ts|html|njk|jade|pug|scss|css|less|md|markdown)');
                             });
                         let replace = {
                                 'WEBSITE-NAME': finalPromptResult.websiteName,
