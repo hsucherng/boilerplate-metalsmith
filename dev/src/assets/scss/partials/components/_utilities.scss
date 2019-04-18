@@ -1,5 +1,51 @@
 /*-----------------------------------------------------------------------------
     $ Utilities
+-------------------------------------------------------------------------------
+    Utility classes are single-purpose styles, used like how you would apply
+    an inline style, except with lower specificity (so harder to override other
+    styles), but better flexibility (comes with responsive variations).
+
+    Given the following configurations:
+
+        $utilities-media-queries: (
+            'xs': bp(xs-up),
+            'sm-dn': bp(sm-dn),
+        )l
+
+        $utilities: (
+            'as': (
+                (
+                    appendMedia: true,
+                    values: (
+                        'c': (align-self: center),
+                        'fs': (align-self: flex-start),
+                        'fe': (align-self: flex-end),
+                    ),
+                ),
+            ),
+        );
+
+    This will generate the following utility classes:
+
+        .as-c  { align-self: center;     }
+        .as-fs { align-self: flex-start; }
+        .as-fe { align-self: flex-end;   }
+
+        @media #{bp(xs-up)} { // <-- Based on the default media variable value, this should result in (min-width: 481px)
+            .as-xs-c  { align-self: center;     }
+            .as-xs-fs { align-self: flex-start; }
+            .as-xs-fe { align-self: flex-end;   }
+        }
+
+        @media #{bp(sm-dn)} { // <-- Based on the default media variable value, this should result in (max-width: 640px)
+            .as-sm-dn-c  { align-self: center;     }
+            .as-sm-dn-fs { align-self: flex-start; }
+            .as-sm-dn-fe { align-self: flex-end;   }
+        }
+
+    Feel free to modify the `$utilities-media-queries` and `$utilities` map
+    as required.
+
 -----------------------------------------------------------------------------*/
 
 .ha {
@@ -531,7 +577,7 @@ $utilities: (
     $query: '';
 
     @if $media != false {
-        $query: '\\@#{$media}';
+        $query: '-#{$media}';
     }
 
     @each $keyName, $keySets in $utilities {
@@ -543,7 +589,7 @@ $utilities: (
             or $appendMedia != false {
                 @each $valueKey, $valueSet in $values {
                     @each $propName, $propValue in $valueSet {
-                        .#{$keyName}\:#{$valueKey}#{$query} { #{$propName}: #{$propValue}; }
+                        .#{$keyName}#{$query}-#{$valueKey} { #{$propName}: #{$propValue}; }
                     }
                 }
             }
