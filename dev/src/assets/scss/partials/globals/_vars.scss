@@ -50,7 +50,14 @@ $white: #fff;
 //=============================================================================
 //  $ Easings
 //-----------------------------------------------------------------------------
-//  Easings are from http://easings.net/
+//
+//  Easings are from http://easings.net/. To be used with the `ease` function
+//  that's from our `_functions.scss` file:
+//
+//      .sample {
+//          transition-timing-function: ease(out-expo);
+//      }
+//
 //=============================================================================
 
 $easings: (
@@ -71,6 +78,17 @@ $ff-alpha: 'Georgia', #{$ff-base};
 
 //=============================================================================
 //  $ Media
+//-----------------------------------------------------------------------------
+//
+//  To be used with the `bp` (breakpoint) function that's from our
+//  `_functions.scss` file:
+//
+//      @media #{bp(xs-up)} {
+//          .only-for-480px-width-and-above {
+//              ...
+//          }
+//      }
+//
 //=============================================================================
 
 $media-sizes: (
