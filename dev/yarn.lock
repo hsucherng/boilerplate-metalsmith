@@ -1437,11 +1437,6 @@ is-windows@^1.0.2:
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
   integrity sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==
 
-is-wsl@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-1.1.0.tgz#1f16e4aa22b04d1336b66188a66af3c600c3a66d"
-  integrity sha1-HxbkqiKwTRM2tmGIpmrzxgDDpm0=
-
 is@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/is/-/is-3.2.1.tgz#d0ac2ad55eb7b0bec926a5266f6c662aaa83dca5"
@@ -1979,13 +1974,6 @@ node-gyp@^3.8.0:
     semver "~5.3.0"
     tar "^2.0.0"
     which "1"
-
-node-netstat@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/node-netstat/-/node-netstat-1.6.0.tgz#38c36b5f966b00ffaa2ed6f6321e6ad4487d8c89"
-  integrity sha512-KPDopkvPllhcILoHMWYUxvOO5c+VcPB38LxlOFPiZhZ/hJTMH/GXGCs6nvxu4d6unwsbEfgzJ4pPye3CFv9yTg==
-  dependencies:
-    is-wsl "^1.1.0"
 
 node-pre-gyp@^0.10.0:
   version "0.10.3"
