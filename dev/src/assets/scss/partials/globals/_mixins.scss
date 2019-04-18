@@ -2,65 +2,14 @@
 //  Mixins
 //-----------------------------------------------------------------------------
 
-//
-//  Media query mixin
-//
-//  This should be used together with the breakpoint function `bp()`.
-//
-//  Assuming our variable is as below:
-//
-//      $media-queries: (
-//          xs-dn: '(max-width: 480px)',
-//          md-up: '(min-width: 801px)'
-//      );
-//
-//  We can use the media mixin in the following ways:
-//
-//  - Single breakpoint:
-//
-//      @include mq(bp(xs-dn)) { ... }
-//      └►  @media (max-width: 480px) { ... }
-//
-//  - Multiple breakpoints:
-//
-//      @include mq(bp(xs-dn), bp(md-up)) { ... }
-//      └►  @media (max-width: 480px), (min-width: 801px) { ... }
-//
-//  - Can mix with custom media queries when needed:
-//
-//      @include mq('print') { ... }
-//      └►  @media print { ... }
-//
-//      @include mq(bp(xs-dn), '(min-height: 1025px)') { ... }
-//      └►  @media (max-width: 480px), (min-height: 1025px) { ... }
-//
-//      @include mq(bp(xs-dn, '(max-height: 480px)')) { ... }
-//      └►  @media (max-width: 480px) and (max-height: 480px) { ... }
-//
-@mixin mq($breakpoints...) {
-    $query: '';
-
-    @each $breakpoint in $breakpoints {
-        @if $query != '' {
-            $query: $query + ', ';
-        }
-
-        $query: $query + $breakpoint;
-    }
-
-    @media #{$query} {
-        @content;
-    }
-}
-
-@mixin placeholders() {
-    /* autoprefixer: off */
-   &::-webkit-input-placeholder { @content; }
-       &::-ms-input-placeholder { @content; }
-        &:-ms-input-placeholder { @content; }
-            &::-moz-placeholder { @content; }
-             &:-moz-placeholder { @content; }
-}
+// @mixin placeholders() {
+//     /* autoprefixer: off */
+//    &::-webkit-input-placeholder { @content; }
+//        &::-ms-input-placeholder { @content; }
+//         &:-ms-input-placeholder { @content; }
+//             &::-moz-placeholder { @content; }
+//              &:-moz-placeholder { @content; }
+// }
 
 @mixin hidden-accessible() {
     width: 0;
@@ -72,16 +21,16 @@
     overflow: hidden;
 }
 
-@mixin clearfix() {
-    &:before,
-    &:after {
-        content: ' ';
-        display: table;
-    }
-    &:after {
-        clear: both;
-    }
-}
+// @mixin clearfix() {
+//     &:before,
+//     &:after {
+//         content: ' ';
+//         display: table;
+//     }
+//     &:after {
+//         clear: both;
+//     }
+// }
 
 //@mixin ellipsis() {
 //    overflow: hidden;
