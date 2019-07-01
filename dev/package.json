@@ -29,5 +29,8 @@
     "postcss-reporter": "^6.0.0",
     "postcss-scss": "^2.0.0",
     "prompt": "^1.0.0"
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }

@@ -44,17 +44,6 @@ Metalsmith(__dirname)
     .destination('build')
 
     /* CSS */
-    .use(postcss({
-        map: false,
-        pattern: ['**/*.scss'],
-        plugins: {
-            "autoprefixer": {},
-            "postcss-reporter": {
-                throwError: true
-            }
-        },
-        syntax: postcssSCSS,
-    }))
     .use(sass({
         outputStyle: "expanded",
         outputDir: function(originalPath) {
@@ -62,6 +51,15 @@ Metalsmith(__dirname)
         },
         sourceMap: true,
         sourceMapContents: true
+    }))
+    .use(postcss({
+        map: false,
+        plugins: {
+            "autoprefixer": {},
+            "postcss-reporter": {
+                throwError: true
+            }
+        },
     }))
     .use(copy({ // Making a copy...
         pattern: '**/*.css',
