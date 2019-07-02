@@ -95,15 +95,6 @@
 
 //---- Map-list getters ----//
 
-// Easings getter
-@function ease($easing) {
-    @if map-has-key($easings, $easing) {
-        @return map-get($easings, $easing);
-    } @else {
-        @error 'No such easing `#{$easing}` in the $easings list.';
-    }
-}
-
 //
 //  Breakpoint getter
 //

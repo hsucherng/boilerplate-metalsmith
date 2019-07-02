@@ -51,23 +51,16 @@ $white: #fff;
 //  $ Easings
 //-----------------------------------------------------------------------------
 //
-//  Easings are from http://easings.net/. To be used with the `ease` function
-//  that's from our `_functions.scss` file:
-//
-//      .sample {
-//          transition-timing-function: ease(out-expo);
-//      }
+//  Easings are from http://easings.net/.
 //
 //=============================================================================
 
-$easings: (
-    out-expo: cubic-bezier(0.19, 1, 0.22, 1),
-    out-quart: cubic-bezier(0.165, 0.84, 0.44, 1),
-    out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94),
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+$ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-    in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22),
-    in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53),
-);
+$ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
 
 //=============================================================================
 //  $ Fonts
@@ -148,10 +141,10 @@ $media-queries: (
 //=============================================================================
 
 $transition-duration: 0.4s;
-$transition-easing: ease(out-expo);
+$transition-easing: $ease-out-expo;
 
 $smooth-transition-duration: 0.6s;
-$smooth-transition-easing: ease(out-quad);
+$smooth-transition-easing: $ease-out-quad;
 
 //=============================================================================
 //  $ Z-Index
