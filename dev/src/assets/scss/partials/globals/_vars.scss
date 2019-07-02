@@ -83,8 +83,14 @@ $ff-alpha: 'Georgia', #{$ff-base};
 //  To be used with the `bp` (breakpoint) function that's from our
 //  `_functions.scss` file:
 //
-//      @media #{bp(xs-up)} {
+//      @media (bp(xs-up)) {
 //          .only-for-480px-width-and-above {
+//              ...
+//          }
+//      }
+//
+//      @media (bp(xs-dn)) {
+//          .only-for-480px-width-and-below {
 //              ...
 //          }
 //      }
@@ -101,15 +107,18 @@ $media-sizes: (
     // 'full': 1920, // Full
 );
 
-$media-queries: ();
+$media-queries: (
+    // To see what's supposed to be in this map list, check the second
+    // @each loop right after this.
+);
 
 @each $base-size, $base-width in $media-sizes {
     // Create SIZE-up and SIZE-dn ranges.
     $media-queries: map-merge(
         $media-queries,
         (
-            #{$base-size}-dn: '(max-width: #{px($base-width)})',
-            #{$base-size}-up: '(min-width: #{px($base-width + 1)})'
+            #{$base-size}-dn: 'max-width: #{px($base-width)}',
+            #{$base-size}-up: 'min-width: #{px($base-width + 1)}'
         )
     );
 
@@ -120,7 +129,7 @@ $media-queries: ();
                 $media-queries: map-merge(
                     $media-queries,
                     (
-                        #{$base-size}-#{$other-size}: '(min-width: #{px($base-width + 1)}) and (max-width: #{px($other-width)})'
+                        #{$base-size}-#{$other-size}: 'min-width: #{px($base-width + 1)}) and (max-width: #{px($other-width)}'
                     )
                 );
             }
@@ -128,8 +137,11 @@ $media-queries: ();
     }
 }
 
-// Uncomment the line below to see exactly what ranges are available.
-//@debug map-keys($media-queries);
+// Uncomment the @each loop below, then check your command line
+// to see exactly what ranges are available.
+// @each $mq-key, $mq-val in $media-queries {
+//     @debug $mq-key + ': ' + $mq-val;
+// }
 
 //=============================================================================
 //  $ Transitions

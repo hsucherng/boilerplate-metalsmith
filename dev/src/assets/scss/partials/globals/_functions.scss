@@ -110,46 +110,24 @@
 //  Assuming our variable is as below:
 //
 //      $media-queries: (
-//          xs-dn: '(max-width: 480px)',
-//          md-up: '(min-width: 801px)'
+//          xs-up: 'min-width: 480px',
+//          md-dn: 'max-width: 800px'
 //      );
 //
-//  We can use the breakpoint function in the following ways:
+//  We can use the breakpoint function as follows:
 //
-//  - Simple keyword:
+//      @media (bp(xs-up))              { ... }
+//      └►  @media (min-width: 481px)   { ... }
 //
-//      bp(xs-dn)
-//      └►  (max-width: 480px)
+//      @media (bp(xs-up)) and (bp(md-dn))                      { ... }
+//      └►  @media (min-width: 481px) and (max-width: 800px)    { ... }
 //
-//  - Multiple keywords:
+//      @media (bp(xs-up)), (bp(md-dn))                     { ... }
+//      └►  @media (min-width: 481px), (max-width: 800px)   { ... }
 //
-//      bp(xs-dn, md-up)
-//      └►  (max-width: 480px) and (min-width: 801px)
+//      @media (bp(xs-up)) and (min-height: 481px)              { ... }
+//      └►  @media (min-width: 481px) and (min-height: 481px)   { ... }
 //
-//  - Custom media query (which basically has no functionality):
-//
-//      bp('(max-height: 480px)')
-//      └►  (max-height: 480px)
-//
-//  - Keywords with custom media query:
-//
-//      bp(xs-dn, '(max-height: 480px)')
-//      └►  (max-width: 480px) and (max-height: 480px)
-//
-@function bp($breakpoints...) {
-    $finalBreakpoint: '';
-
-    @each $breakpoint in $breakpoints {
-        @if $finalBreakpoint != '' {
-            $finalBreakpoint: $finalBreakpoint + ' and ';
-        }
-
-        @if map-has-key($media-queries, $breakpoint) {
-            $finalBreakpoint: $finalBreakpoint + map-get($media-queries, $breakpoint);
-        } @else {
-            $finalBreakpoint: $finalBreakpoint + $breakpoint;
-        }
-    }
-
-    @return $finalBreakpoint;
+@function bp($breakpoint) {
+    @return map-get($media-queries, $breakpoint);
 }
