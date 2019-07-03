@@ -160,6 +160,11 @@ $smooth-transition-easing: $ease-out-power1;
 
 //=============================================================================
 //  $ Z-Index
+//-----------------------------------------------------------------------------
+//
+//  Setup all z-indices here so that it's easy to have an overview of the
+//  layers throughout the entire site.
+//
 //=============================================================================
 
-$zi-base: 1;
+$zi-header: 10;
