@@ -85,68 +85,77 @@ $ff-alpha: 'Georgia', #{$ff-base};
 //  $ Media
 //-----------------------------------------------------------------------------
 //
-//  To be used with the `bp` (breakpoint) function that's from our
-//  `_functions.scss` file:
+//  Glossary:
+//      - us = Ultra Small
+//      - xs = Extra Small
+//      - sm = Small
+//      - md = Medium
+//      - lg = Large
+//      - xl = Extra Large
+//      - ul = Ultra Large
+//      - bp = Breakpoint
+//      - dn = Down
 //
-//      @media (bp(xs-up)) {
-//          .only-for-480px-width-and-above {
-//              ...
-//          }
-//      }
+//  So, `$bp-sm-dn` = `breakpoint-small-down`.
 //
-//      @media (bp(xs-dn)) {
-//          .only-for-480px-width-and-below {
-//              ...
-//          }
-//      }
+//  To use a single breakpoint variable:
+//
+//      @media ($bp-xs) { ... }
+//
+//  To use multiple breakpoint variables:
+//
+//      @media ($bp-xs) and ($bp-sm-dn) { ... }
+//
+//  To use a breakpoint variable with a custom breakpoint:
+//
+//      @media ($bp-xs) and (min-height: 525px) { ... }
 //
 //=============================================================================
 
-$media-sizes: (
-    'xs': 480, // Extra small
-    'sm': 640, // Small
-    'md': 800, // Medium
-    'lg': 1024, // Large
-    //'xl': 1280, // Extra large
-    // 'ul': 1540, // Ultra large
-    // 'full': 1920, // Full
-);
+$media-us-width: 320px;
+$media-xs-width: 480px;
+$media-sm-width: 640px;
+$media-md-width: 800px;
+$media-lg-width: 1024px;
+$media-xl-width: 1280px;
+$media-ul-width: 1440px;
 
-$media-queries: (
-    // To see what's supposed to be in this map list, check the second
-    // @each loop right after this.
-);
+$bp-xs: 'min-width: #{$media-xs-width}';
+$bp-sm: 'min-width: #{$media-sm-width}';
+$bp-md: 'min-width: #{$media-md-width}';
+$bp-lg: 'min-width: #{$media-lg-width}';
+$bp-xl: 'min-width: #{$media-xl-width}';
+$bp-ul: 'min-width: #{$media-ul-width}';
 
-@each $base-size, $base-width in $media-sizes {
-    // Create SIZE-up and SIZE-dn ranges.
-    $media-queries: map-merge(
-        $media-queries,
-        (
-            #{$base-size}-dn: 'max-width: #{px($base-width)}',
-            #{$base-size}-up: 'min-width: #{px($base-width + 1)}'
-        )
-    );
+$bp-xs-dn: 'max-width: #{$media-xs-width - 0.02}';
+$bp-sm-dn: 'max-width: #{$media-sm-width - 0.02}';
+$bp-md-dn: 'max-width: #{$media-md-width - 0.02}';
+$bp-lg-dn: 'max-width: #{$media-lg-width - 0.02}';
+$bp-xl-dn: 'max-width: #{$media-xl-width - 0.02}';
+$bp-ul-dn: 'max-width: #{$media-ul-width - 0.02}';
 
-    // Create SIZE1-SIZE2 ranges, where SIZE1 is smaller than SIZE2.
-    @each $other-size, $other-width in $media-sizes {
-        @if $base-size != $other-size {
-            @if $base-width < $other-width {
-                $media-queries: map-merge(
-                    $media-queries,
-                    (
-                        #{$base-size}-#{$other-size}: 'min-width: #{px($base-width + 1)}) and (max-width: #{px($other-width)}'
-                    )
-                );
-            }
-        }
-    }
-}
+$bp-xs-sm: '#{$bp-xs}) and (#{$bp-sm-dn}';
+$bp-xs-md: '#{$bp-xs}) and (#{$bp-md-dn}';
+$bp-xs-lg: '#{$bp-xs}) and (#{$bp-lg-dn}';
+$bp-xs-xl: '#{$bp-xs}) and (#{$bp-xl-dn}';
+$bp-xs-ul: '#{$bp-xs}) and (#{$bp-ul-dn}';
 
-// Uncomment the @each loop below, then check your command line
-// to see exactly what ranges are available.
-// @each $mq-key, $mq-val in $media-queries {
-//     @debug $mq-key + ': ' + $mq-val;
-// }
+$bp-sm-md: '#{$bp-sm}) and (#{$bp-md-dn}';
+$bp-sm-lg: '#{$bp-sm}) and (#{$bp-lg-dn}';
+$bp-sm-xl: '#{$bp-sm}) and (#{$bp-xl-dn}';
+$bp-sm-ul: '#{$bp-sm}) and (#{$bp-ul-dn}';
+
+$bp-md-lg: '#{$bp-md}) and (#{$bp-lg-dn}';
+$bp-md-xl: '#{$bp-md}) and (#{$bp-xl-dn}';
+$bp-md-ul: '#{$bp-md}) and (#{$bp-ul-dn}';
+
+$bp-lg-xl: '#{$bp-lg}) and (#{$bp-xl-dn}';
+$bp-lg-ul: '#{$bp-lg}) and (#{$bp-ul-dn}';
+
+$bp-xl-ul: '#{$bp-xl}) and (#{$bp-ul-dn}';
+
+$bp-desktop-nav: $bp-md;
+$bp-mobile-nav:  $bp-md-dn;
 
 //=============================================================================
 //  $ Transitions

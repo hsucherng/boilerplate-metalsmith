@@ -92,33 +92,3 @@
         @return $num * 1em;
     }
 }
-
-//---- Map-list getters ----//
-
-//
-//  Breakpoint getter
-//
-//  Assuming our variable is as below:
-//
-//      $media-queries: (
-//          xs-up: 'min-width: 480px',
-//          md-dn: 'max-width: 800px'
-//      );
-//
-//  We can use the breakpoint function as follows:
-//
-//      @media (bp(xs-up))              { ... }
-//      └►  @media (min-width: 481px)   { ... }
-//
-//      @media (bp(xs-up)) and (bp(md-dn))                      { ... }
-//      └►  @media (min-width: 481px) and (max-width: 800px)    { ... }
-//
-//      @media (bp(xs-up)), (bp(md-dn))                     { ... }
-//      └►  @media (min-width: 481px), (max-width: 800px)   { ... }
-//
-//      @media (bp(xs-up)) and (min-height: 481px)              { ... }
-//      └►  @media (min-width: 481px) and (min-height: 481px)   { ... }
-//
-@function bp($breakpoint) {
-    @return map-get($media-queries, $breakpoint);
-}

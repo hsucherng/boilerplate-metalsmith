@@ -8,8 +8,8 @@
     Given the following configurations:
 
         $utilities-media-queries: (
-            'xs':    '(#{bp(xs-up)})',
-            'sm-dn': '(#{bp(sm-dn)})',
+            'xs':    $bp-xs,
+            'sm-dn': $bp-sm-dn,
         )l
 
         $utilities: (
@@ -31,13 +31,13 @@
         .as-fs { align-self: flex-start; }
         .as-fe { align-self: flex-end;   }
 
-        @media (bp(xs-up)) { // <-- Based on the default media variable value, this should result in (min-width: 481px)
+        @media ($bp-xs) { // <-- Based on the default media variable value, this should result in (min-width: 480px)
             .as-xs-c  { align-self: center;     }
             .as-xs-fs { align-self: flex-start; }
             .as-xs-fe { align-self: flex-end;   }
         }
 
-        @media (bp(sm-dn)) { // <-- Based on the default media variable value, this should result in (max-width: 640px)
+        @media ($bp-sm-dn) { // <-- Based on the default media variable value, this should result in (max-width: 639.98px)
             .as-sm-dn-c  { align-self: center;     }
             .as-sm-dn-fs { align-self: flex-start; }
             .as-sm-dn-fe { align-self: flex-end;   }
@@ -59,33 +59,41 @@
 //----//
 
 $utilities-media-queries: (
-    // 'xs': '(#{bp(xs-up)})',
-    // 'sm': '(#{bp(sm-up)})',
-    // 'md': '(#{bp(md-up)})',
-    // 'lg': '(#{bp(lg-up)})',
-    // 'xl': '(#{bp(xl-up)})',
+    // 'xs': $bp-xs,
+    // 'sm': $bp-sm,
+    // 'md': $bp-md,
+    // 'lg': $bp-lg,
+    // 'xl': $bp-xl,
+    // 'ul': $bp-ul,
 
-    // 'xs-dn': '(#{bp(xs-dn)})',
-    // 'sm-dn': '(#{bp(sm-dn)})',
-    // 'md-dn': '(#{bp(md-dn)})',
-    // 'lg-dn': '(#{bp(lg-dn)})',
-    // 'xl-dn': '(#{bp(xl-dn)})',
+    // 'xs-dn': $bp-xs-dn,
+    // 'sm-dn': $bp-sm-dn,
+    // 'md-dn': $bp-md-dn,
+    // 'lg-dn': $bp-lg-dn,
+    // 'xl-dn': $bp-xl-dn,
+    // 'ul-dn': $bp-ul-dn,
 
-    // 'xs-sm': '(#{bp(xs-sm)})',
-    // 'xs-md': '(#{bp(xs-md)})',
-    // 'xs-lg': '(#{bp(xs-lg)})',
-    // 'xs-xl': '(#{bp(xs-xl)})',
+    // 'xs-sm': $bp-xs-sm,
+    // 'xs-md': $bp-xs-md,
+    // 'xs-lg': $bp-xs-lg,
+    // 'xs-xl': $bp-xs-xl,
+    // 'xs-ul': $bp-xs-ul,
 
-    // 'sm-md': '(#{bp(sm-md)})',
-    // 'sm-lg': '(#{bp(sm-lg)})',
-    // 'sm-xl': '(#{bp(sm-xl)})',
+    // 'sm-md': $bp-sm-md,
+    // 'sm-lg': $bp-sm-lg,
+    // 'sm-xl': $bp-sm-xl,
+    // 'sm-ul': $bp-sm-ul,
 
-    // 'md-lg': '(#{bp(md-lg)})',
-    // 'md-xl': '(#{bp(md-xl)})',
+    // 'md-lg': $bp-md-lg,
+    // 'md-xl': $bp-md-xl,
+    // 'md-ul': $bp-md-ul,
 
-    // 'lg-xl': '(#{bp(lg-xl)})',
+    // 'lg-xl': $bp-lg-xl,
+    // 'lg-ul': $bp-lg-ul,
 
-    // 'print': print,
+    // 'xl-ul': $bp-xl-ul,
+
+    // 'print': 'print',
 );
 
 $utilities: (
@@ -600,7 +608,7 @@ $utilities: (
 @include generate-utilities;
 
 @each $queryKey, $queryCondition in $utilities-media-queries {
-    @media #{$queryCondition} {
+    @media ($queryCondition) {
         @include generate-utilities($media: $queryKey);
     }
 }
