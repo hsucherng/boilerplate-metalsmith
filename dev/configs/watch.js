@@ -8,7 +8,8 @@ module.exports = {
         "${source}/**/assets/!(js|scss)/**": true,
         "${source}/**/assets/js/**/*.js": "**/assets/js/**/*.js",
         "${source}/**/assets/scss/**/*.scss": "**/assets/scss/**/*.scss",
-        "templates/**": "**/*.njk"
+        "templates/**": "**/*.njk",
+        "${source}/_meta-transformers.js": "**/*.njk",
     },
     livereload: expressConfig.liveReloadPort
 };

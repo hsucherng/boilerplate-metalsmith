@@ -14,15 +14,14 @@ const uglify         = require('metalsmith-uglify');
 const watch          = require('metalsmith-watch');
 
 /* Custom modules */
-const argv           = require('./custom-modules/argv.js');
-const defaultMeta    = require('./custom-modules/metalsmith-default-meta.js');
-const jsPartials     = require('./custom-modules/metalsmith-js-partial.js');
-const run            = require('./custom-modules/metalsmith-run.js');
-const virtualFolder  = require('./custom-modules/metalsmith-virtual-folder.js');
+const argv               = require('./custom-modules/argv.js');
+const jsPartials         = require('./custom-modules/metalsmith-js-partial.js');
+const metaTransformers   = require('./custom-modules/metalsmith-meta-transformers.js');
+const run                = require('./custom-modules/metalsmith-run.js');
+const virtualFolder      = require('./custom-modules/metalsmith-virtual-folder.js');
 
 /* Configs */
 const configs = {
-        defaultMeta: require('./configs/default-meta.js'),
         express:     require('./configs/express.js'),
         misc:        require('./configs/misc.js'),
         watch:       require('./configs/watch.js')
@@ -42,6 +41,7 @@ console.log(`\r\n${ colors.green.bold('Building...') }\r\n`);
 Metalsmith(__dirname)
     .source('src')
     .destination('build')
+    .use(metaTransformers('_meta-transformers.js'))
 
     /* CSS */
     .use(sass({
@@ -82,7 +82,6 @@ Metalsmith(__dirname)
 
     /* HTML */
     .use(filenames()) // Not absolutely necessary, but it's useful metadata, especially for navigation
-    .use(defaultMeta(configs.defaultMeta))
     .use(inPlace({
         pattern: '**/*.njk',
         engineOptions: {
