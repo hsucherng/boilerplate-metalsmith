@@ -9,7 +9,7 @@ module.exports = {
         "${source}/**/assets/js/**/*.js": "**/assets/js/**/*.js",
         "${source}/**/assets/scss/**/*.scss": "**/assets/scss/**/*.scss",
         "templates/**": "**/*.njk",
-        "${source}/_meta-transformers.js": "**/*.njk",
+        "configs/meta-transformers.js": "**/*.njk",
     },
     livereload: expressConfig.liveReloadPort
 };

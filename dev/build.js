@@ -20,7 +20,7 @@ const metaTransformers   = require('./custom-modules/metalsmith-meta-transformer
 const run                = require('./custom-modules/metalsmith-run.js');
 const virtualFolder      = require('./custom-modules/metalsmith-virtual-folder.js');
 
-/* Configs */
+/* Static configs */
 const configs = {
         express:     require('./configs/express.js'),
         misc:        require('./configs/misc.js'),
@@ -41,7 +41,7 @@ console.log(`\r\n${ colors.green.bold('Building...') }\r\n`);
 Metalsmith(__dirname)
     .source('src')
     .destination('build')
-    .use(metaTransformers('_meta-transformers.js'))
+    .use(metaTransformers(__dirname + '/configs/meta-transformers.js'))
 
     /* CSS */
     .use(sass({

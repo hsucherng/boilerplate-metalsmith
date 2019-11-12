@@ -1,4 +1,4 @@
-[
+module.exports = [
     {
         pattern: '**/*.njk',
 
@@ -44,4 +44,4 @@
             };
         }
     }
-]
+];
