@@ -1,22 +1,18 @@
+const path = require('path');
+
+let imageBasePath = 'assets/images/pages/';
+
 module.exports = [
     {
         pattern: '**/*.njk',
 
         transform: (filepath, file) => {
-            const splitFilepath = filepath.split('\\');
-            let root = '';
+            let root = path.relative(path.dirname(filepath), './').split(path.sep).join('/');
+            if(root) root += '/';
 
-            for(let i = 0; i < splitFilepath.length - 1; i++) {
-                root += '../';
-            }
-
-            let pageImagePath = 'assets/images/pages/' + filepath.replace(/\.(\w+)$/, '').replace(/\\/g, '/') + '/';
-            let splitPageImagePath = pageImagePath.split('/');
-            let pageParentImagePath = 'assets/images/pages/';
-
-            if(splitPageImagePath.length > 2) {
-                pageParentImagePath = splitPageImagePath.slice(0, splitPageImagePath.length - 2).join('/') + '/';
-            }
+            let pathFormat = path.parse(filepath);
+            let pageImagePath = imageBasePath + (pathFormat.dir ? pathFormat.dir + '/' : '') + pathFormat.name + '/';
+            let pageParentImagePath = path.join(pageImagePath, '../').split(path.sep).join('/');
 
             file.path = {
                 root,
