@@ -1,3 +1,6 @@
+---
+data: "index.yaml"
+---
 {% extends 'default.njk' %}
 
 {% block styles -%}
@@ -7,7 +10,7 @@
 {% block content -%}
             <div class="wrapper">
                 <h1>
-                    Home
+                    {{ data.title }}
                 </h1>
 
                 <br>

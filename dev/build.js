@@ -3,6 +3,7 @@ const Metalsmith     = require('metalsmith');
 const cleanCss       = require('metalsmith-clean-css');
 const copy           = require('metalsmith-copy');
 const colors         = require('colors/safe');
+const dataLoader     = require('metalsmith-data-loader');
 const express        = require('metalsmith-express');
 const filenames      = require('metalsmith-filenames'); // Not absolutely necessary, but it's useful metadata, especially for navigation
 const inPlace        = require('metalsmith-in-place');
@@ -41,6 +42,24 @@ console.log(`\r\n${ colors.green.bold('Building...') }\r\n`);
 Metalsmith(__dirname)
     .source('src')
     .destination('build')
+
+    /* Metadata */
+    .use(dataLoader(/*{
+        removeSource: true
+    }*/))
+    /*
+     * `removeSource: true` for dataLoader currently does not work properly.
+     * So we need to remove the YAML files ourselves.
+     */
+    .use((files, metalsmith, done) => {
+        Object.keys(files)
+            .filter(filepath => minimatch(filepath, '**/*.yaml'))
+            .forEach(filepath => {
+                delete files[filepath];
+            })
+
+        done();
+    })
     .use(metaTransformers(__dirname + '/configs/meta-transformers.js'))
 
     /* CSS */
