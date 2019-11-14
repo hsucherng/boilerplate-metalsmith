@@ -237,9 +237,14 @@ $utilities: (
         (
             appendMedia: false,
             values: (
-                // '400': (font-weight: 400),
-                // '500': (font-weight: 500),
-                // '700': (font-weight: 700),
+                // 'thin': (font-weight: $fw-thin),
+                // 'light': (font-weight: $fw-light),
+                // 'regular': (font-weight: $fw-regular),
+                // 'medium': (font-weight: $fw-medium),
+                // 'semibold': (font-weight: $fw-semibold),
+                // 'bold': (font-weight: $fw-bold),
+                // 'extra-bold': (font-weight: $fw-extra-bold),
+                // 'black': (font-weight: $fw-black),
             ),
         ),
     ),
