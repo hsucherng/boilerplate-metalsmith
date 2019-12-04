@@ -44,22 +44,9 @@ Metalsmith(__dirname)
     .destination('build')
 
     /* Metadata */
-    .use(dataLoader(/*{
+    .use(dataLoader({
         removeSource: true
-    }*/))
-    /*
-     * `removeSource: true` for dataLoader currently does not work properly.
-     * So we need to remove the YAML files ourselves.
-     */
-    .use((files, metalsmith, done) => {
-        Object.keys(files)
-            .filter(filepath => minimatch(filepath, '**/*.yaml'))
-            .forEach(filepath => {
-                delete files[filepath];
-            })
-
-        done();
-    })
+    }))
     .use(metaTransformers(__dirname + '/configs/meta-transformers.js'))
 
     /* CSS */
