@@ -21,7 +21,7 @@
 const minimatch = require('minimatch');
 
 module.exports = function(options) {
-    const regexp = /^( +)?\/\/(-)?@js-partial(.+)$/gm;
+    const regexp = /^(\s+)?\/\/(-)?@js-partial(.+)$/gm;
 
     return function(files, metalsmith, done) {
         const jsFiles = Object.keys(files).filter(function(filepath) {
