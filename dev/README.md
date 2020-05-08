@@ -1,18 +1,21 @@
 # WEBSITE-NAME
 
-This project uses [Metalsmith](http://metalsmith.io), and has been setup with the following:
+This boilerplate has been setup with the following:
 
-- Third party plugins:
+- [Metalsmith](https://metalsmith.io/), with the following plugins:
     - [Autoprefixer](https://github.com/postcss/autoprefixer)
+    - [Beautify](https://github.com/boushley/metalsmith-beautify) (only set up to beautify HTML)
     - [Express](https://github.com/chiefy/metalsmith-express) (which also comes with LiveReload)
     - [Nunjucks](https://mozilla.github.io/nunjucks/)
     - [SCSS](http://sass-lang.com/)
-    - [Stylelint](https://stylelint.io/)
     - [Uglify](https://github.com/ksmithut/metalsmith-uglify)
+    - Some custom functions:
+        - A metadata transformation function for all source files.
+        - A concatenation function to allow for the splitting of JavaScript files into smaller partial files.
 
-- Custom-written functions:
-    - Set default metadata for all source files.
-    - A concatenation function to allow for the splitting of JavaScript files into smaller partial files.
+- Settings for the following Sublime Text packages, recommended that you install them if you're on Sublime Text:
+    - [SublimeLinter-stylelint](https://github.com/SublimeLinter/SublimeLinter-stylelint)
+    - [sublime-postcss-sorting](https://github.com/hudochenkov/sublime-postcss-sorting)
 
 ## Initial setup
 
@@ -51,27 +54,18 @@ There is a `path` object that you can use within the `.njk` files for page and a
 - `{{ path.images.page }}` leads to the page images folder.
     - The value of this is dependent on the folder path and file name, e.g. if you are currently working on `about/creative-team/art-director.njk`, then `{{ path.images.page }}` will result in `{{ path.root }}assets/images/pages/about/creative-team/art-director/`.
 
-This `path` object is setup using `configs/default-meta.js`. Feel free to edit it if you require additional path information.
+This `path` object is setup using `configs/meta-transformers.js`. Feel free to edit it if you require additional path information.
 
 ## Additional configurations
 
 Check the files in the `configs` folder for the configurations that affect the build and its output:
 
-- `default-meta.js`: This is the default metadata for files used in the project. Most useful for `.njk` files, because these metadata are then exposed for template usage.
-    - Note that the metadata set in the page's YAML frontmatter will always take precedence over those set in `default-meta.js`.
+- `meta-transformers.js`: This is the metadata transformation config files for the project. The metadata that is set here are exposed for template usage, which comes in very handy for use with `.njk` files.
 - `express.js`: This determines the `host` and `port` to serve your site on. By default it is set to `localhost:8080`.
 - `misc.js`: Miscellaneous settings:
     - `setupComplete`: This boolean is used to determine whether we've run the `setup` command. Once the `setup` command is completed, this property will be updated accordingly.
     - `virtualFolderName`: This determines the final path that the site will be served on. Once the `setup` command is completed, this property will be updated accordingly.
 - `watch.js`: This determines what files are watched, as well as how the files trigger rebuilds of other files whenever they are changed.
-
-## Stylelint
-
-This project has `.stylelintignore` and `.stylelintrc.json` setup for use with [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter) and [SublimeLinter-stylelint](https://github.com/SublimeLinter/SublimeLinter-stylelint). You will need to install both of those using Package Control, as well as globally installing PostCSS and Stylelint using `npm`:
-
-```
-npm install -g postcss stylelint
-```
 
 ## Debugging notes
 
