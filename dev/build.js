@@ -1,5 +1,6 @@
 /* Modules from npm */
 const Metalsmith     = require('metalsmith');
+const beautify       = require('metalsmith-beautify');
 const cleanCss       = require('metalsmith-clean-css');
 const copy           = require('metalsmith-copy');
 const colors         = require('colors/safe');
@@ -94,6 +95,13 @@ Metalsmith(__dirname)
             path: __dirname + '/templates'
         },
         suppressNoFilesError: true
+    }))
+    .use(beautify({
+        js: false,
+        css: false,
+        html: {
+            wrap_line_length: 120
+        }
     }))
 
     /* Virtual folder */
