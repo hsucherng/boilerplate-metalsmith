@@ -132,7 +132,7 @@
         "function-url-quotes": null,
         "function-whitespace-after": "always",
 
-        "number-leading-zero": null,
+        "number-leading-zero": "always",
         "number-no-trailing-zeros": true,
 
         "string-quotes": null,
