@@ -8,5 +8,60 @@
                 "node_modules"
             ]
 		}
-	]
+	],
+    "settings": {
+        "PostCSSSorting": {
+            "properties-order": [
+                "width",
+                "height",
+                "padding",
+                "border",
+                "outline",
+                "margin",
+                "display",
+                "flex",
+                "flex-flow",
+                "flex-grow",
+                "flex-shrink",
+                "flex-basis",
+                "flex-direction",
+                "flex-wrap",
+                "align-items",
+                "justify-content",
+                "align-self",
+                "align-content",
+                "float",
+                "clear",
+                "position",
+                "top",
+                "right",
+                "bottom",
+                "left",
+                "z-index",
+                "background",
+                "background-color",
+                "background-image",
+                "background-position",
+                "background-repeat",
+                "background-size",
+                "box-shadow",
+                "color",
+                "font-size",
+                "font-style",
+                "font-weight",
+                "letter-spacing",
+                "line-height",
+                "text-align",
+                "text-decoration",
+                "text-transform",
+                "text-shadow",
+                "vertical-align",
+                "cursor",
+                "transform",
+                "transition",
+                "animation"
+            ],
+            "sort-on-save": true
+        }
+    }
 }
