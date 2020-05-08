@@ -2,7 +2,7 @@
 
 To set it up:
 
-1. Make sure you have [NodeJS](http://nodejs.org) and [Yarn](http://yarnpkg.com/) installed. Currently tested with NodeJS v10.14.0 and Yarn v1.12.3.
+1. Make sure you have [NodeJS](http://nodejs.org) and [Yarn](http://yarnpkg.com/) installed. Currently tested with NodeJS v10.16.3 and Yarn v1.21.1.
 2. Clone this repository onto your machine.
 3. Copy the `dev` folder and paste it at where you want your development files to be.
 4. Open up the command-line and `cd` into the freshly copied `dev` folder.
