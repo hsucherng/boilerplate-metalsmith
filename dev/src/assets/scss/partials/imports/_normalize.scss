@@ -37,8 +37,8 @@ section {
  */
 
 h1 {
-  font-size: 2em;
   margin: 0.67em 0;
+  font-size: 2em;
 }
 
 /* Grouping content
@@ -170,9 +170,9 @@ small {
 
 sub,
 sup {
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
   vertical-align: baseline;
 }
 
@@ -201,8 +201,8 @@ video {
  */
 
 audio:not([controls]) {
-  display: none;
   height: 0;
+  display: none;
 }
 
 /**
@@ -277,8 +277,8 @@ button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
-  border-style: none;
   padding: 0;
+  border-style: none;
 }
 
 /**
@@ -301,10 +301,10 @@ button:-moz-focusring,
 
 legend {
   box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
   max-width: 100%; /* 1 */
   padding: 0; /* 3 */
+  display: table; /* 1 */
+  color: inherit; /* 2 */
   white-space: normal; /* 1 */
 }
 
