@@ -1,7 +1,5 @@
 const path = require('path');
 
-let imageBasePath = 'assets/images/pages/';
-
 module.exports = [
     {
         pattern: '**/*.njk',
@@ -11,7 +9,9 @@ module.exports = [
             if(root) root += '/';
 
             let pathFormat = path.parse(filepath);
-            let pageImagePath = imageBasePath + (pathFormat.dir ? pathFormat.dir + '/' : '') + pathFormat.name + '/';
+            let fileDirectory = (pathFormat.dir ? pathFormat.dir + '/' : '');
+            let fileName = pathFormat.name;
+            let pageImagePath = 'assets/images/pages/' + fileDirectory + fileName + '/';
             let pageParentImagePath = path.join(pageImagePath, '../').split(path.sep).join('/');
 
             file.path = {
