@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="format-detection" content="telephone=no"> <!-- Disable iOS auto telephone number detection -->
         <title>{% if data.title %}{{ data.title }} | {% endif %}WEBSITE-NAME</title>
-        <link href="{{path.css}}style.css" rel="stylesheet" type="text/css">
+        <link href="{{ path.css }}style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <h1 class="ha">
@@ -48,7 +48,7 @@
             </div>
         </section>
 
-        <script src="{{path.js}}externals.min.js"></script>
-        <script src="{{path.js}}main.min.js"></script>
+        <script src="{{ path.js }}externals.min.js"></script>
+        <script src="{{ path.js }}main.min.js"></script>
     </body>
 </html>

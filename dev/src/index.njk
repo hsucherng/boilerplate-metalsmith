@@ -4,7 +4,7 @@ data: "index.yaml"
 {% extends 'default.njk' %}
 
 {% block styles -%}
-        <!-- <link href="{{path.css}}page.css" rel="stylesheet" type="text/css"> -->
+        <!-- <link href="{{ path.css }}page.css" rel="stylesheet" type="text/css"> -->
 {%- endblock %}
 
 {% block content -%}
@@ -24,5 +24,5 @@ data: "index.yaml"
 {%- endblock %}
 
 {% block scripts -%}
-        <!-- <script src="{{path.js}}home.js"></script> -->
+        <!-- <script src="{{ path.js }}home.js"></script> -->
 {%- endblock %}
