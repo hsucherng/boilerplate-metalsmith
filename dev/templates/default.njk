@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="format-detection" content="telephone=no"> <!-- Disable iOS auto telephone number detection -->
-        <title>{% if data.title %}{{ data.title }} | {% endif %}WEBSITE-NAME</title>
-        <link href="{{ path.css }}style.css" rel="stylesheet" type="text/css">
-    </head>
-    <body>
-        <h1 class="ha">
-            WEBSITE-NAME{% if data.title %} - {{ data.title }}{% endif %}
-        </h1>
 
-        <section class="site-header">
-            <h2 class="ha">
-                Site Header
-            </h2>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"> <!-- Disable iOS auto telephone number detection -->
+    <title>{% if data.title %}{{ data.title }} | {% endif %}WEBSITE-NAME</title>
+    <link href="{{ path.css }}style.css" rel="stylesheet" type="text/css">
+</head>
 
-            <div class="wrapper">
-                Header here.
+<body>
+    <h1 class="ha">
+        WEBSITE-NAME{% if data.title %} - {{ data.title }}{% endif %}
+    </h1>
 
-                <nav>
-                    <h3 class="ha">
-                        Navigation
-                    </h3>
-                </nav>
-            </div>
-        </section>
+    <section class="site-header">
+        <h2 class="ha">
+            Site Header
+        </h2>
 
-        <main class="site-main">
-            {% block content %}{% endblock %}
-        </main>
+        <div class="wrapper">
+            Header here.
 
-        <section class="site-footer">
-            <h2 class="ha">
-                Site Footer
-            </h2>
+            <nav>
+                <h3 class="ha">
+                    Navigation
+                </h3>
+            </nav>
+        </div>
+    </section>
 
-            <div class="wrapper">
-                Footer here.
+    <main class="site-main">
+        {% block content %}{% endblock %}
+    </main>
 
-                <nav>
-                    <h3 class="ha">
-                        Navigation
-                    </h3>
-                </nav>
-            </div>
-        </section>
+    <section class="site-footer">
+        <h2 class="ha">
+            Site Footer
+        </h2>
 
-        <script src="{{ path.js }}externals.min.js"></script>
-        <script src="{{ path.js }}main.min.js"></script>
-    </body>
+        <div class="wrapper">
+            Footer here.
+
+            <nav>
+                <h3 class="ha">
+                    Navigation
+                </h3>
+            </nav>
+        </div>
+    </section>
+
+    <script src="{{ path.js }}externals.min.js"></script>
+    <script src="{{ path.js }}main.min.js"></script>
+</body>
+
 </html>

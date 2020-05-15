@@ -1,28 +1,29 @@
 ---
 data: "index.yaml"
 ---
+
 {% extends 'default.njk' %}
 
 {% block styles -%}
-        <!-- <link href="{{ path.css }}page.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="{{ path.css }}page.css" rel="stylesheet" type="text/css"> -->
 {%- endblock %}
 
 {% block content -%}
-            <div class="wrapper">
-                <h1>
-                    {{ data.title }}
-                </h1>
+    <div class="wrapper">
+        <h1>
+            {{ data.title }}
+        </h1>
 
-                <br>
+        <br>
 
-                Main content here.<br>
+        Main content here.<br>
 
-                <br>
+        <br>
 
-                {{ path.images.page }}
-            </div>
+        {{ path.images.page }}
+    </div>
 {%- endblock %}
 
 {% block scripts -%}
-        <!-- <script src="{{ path.js }}home.js"></script> -->
+    <!-- <script src="{{ path.js }}home.js"></script> -->
 {%- endblock %}
